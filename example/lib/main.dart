@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'main_outside_list.dart' as mol;
 
-import 'main_outside_list.dart' show MyApp;
+void main() => runApp(mol.MyApp());
 
-// import 'main_example.dart' show MyApp;
-
-// import 'main_demo.dart' show MyApp;
-
-void main() => runApp(MyApp());
-/*
 class MyApp extends StatefulWidget {
   const MyApp({
     Key? key,
@@ -152,4 +148,3 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 }
 
 void doNothing(BuildContext context) {}
-*/

@@ -83,8 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 groupTag: '0',
                 direction: direction,
                 startActionPane: const ActionPane(
-                  openThreshold: 0.1,
-                  closeThreshold: 0.4,
+                  extentRatio: 1,
+                  // openThreshold: 0.1,
+                  // closeThreshold: 0.4,
                   motion: ScrollMotion(),
                   children: [
                     SlidableAction(

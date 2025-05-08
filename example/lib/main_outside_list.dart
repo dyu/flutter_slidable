@@ -5,6 +5,10 @@ void main() {
   runApp(MyApp());
 }
 
+void noop([dynamic _]) {
+  
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,6 +83,61 @@ class _MyHomePageState extends State<MyHomePage> {
                 groupTag: '0',
                 direction: direction,
                 startActionPane: const ActionPane(
+                  openThreshold: 0.1,
+                  closeThreshold: 0.4,
+                  motion: ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      foregroundColor: Colors.green,
+                      icon: Icons.share,
+                      onPressed: noop,
+                    ),
+                    SlidableAction(
+                      foregroundColor: Colors.amber,
+                      icon: Icons.delete,
+                      onPressed: noop,
+                    ),
+                  ],
+                ),
+                endActionPane: const ActionPane(
+                  extentRatio: 1,
+                  motion: ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      foregroundColor: Colors.red,
+                      icon: Icons.delete_forever,
+                      onPressed: noop,
+                    ),
+                    SlidableAction(
+                      foregroundColor: Colors.blue,
+                      icon: Icons.alarm,
+                      onPressed: noop,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(top: 8, bottom: 8),
+                      child: Text('hello', style: TextStyle(fontSize: 16)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 8, bottom: 8),
+                      child: Text('world', style: TextStyle(fontSize: 16)),
+                    ),
+                  ],
+                ),
+                // child: const Tile(color: Colors.grey, text: 'hello'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Slidable(
+                groupTag: '0',
+                direction: direction,
+                startActionPane: const ActionPane(
                   motion: StretchMotion(),
                   children: [
                     SlideAction(color: Colors.green, icon: Icons.share),
@@ -92,7 +151,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     SlideAction(color: Colors.blue, icon: Icons.alarm, flex: 3),
                   ],
                 ),
-                child: const Tile(color: Colors.pink, text: 'hello 2'),
+                child: const Tile(
+                  color: Colors.pink,
+                  text: 'The quick brown fox jumped over the lazy dog sleeping under the bridge',
+                ),
               ),
             ),
             Padding(
@@ -188,12 +250,14 @@ class SlideAction extends StatelessWidget {
     Key? key,
     required this.color,
     required this.icon,
+    this.label = 'hello',
     this.flex = 1,
   }) : super(key: key);
 
   final Color color;
   final IconData icon;
   final int flex;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +267,7 @@ class SlideAction extends StatelessWidget {
       foregroundColor: Colors.white,
       onPressed: (_) {},
       icon: icon,
-      label: 'hello',
+      label: label,
     );
   }
 }

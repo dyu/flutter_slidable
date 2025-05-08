@@ -22,6 +22,8 @@ class CustomSlidableAction extends StatelessWidget {
     this.flex = _kFlex,
     this.backgroundColor = _kBackgroundColor,
     this.foregroundColor,
+    this.disabledBackgroundColor = Colors.transparent,
+    this.disabledForegroundColor = Colors.transparent,
     this.autoClose = _kAutoClose,
     this.borderRadius = BorderRadius.zero,
     this.padding,
@@ -53,6 +55,12 @@ class CustomSlidableAction extends StatelessWidget {
   /// [Brightness.dark].
   /// {@endtemplate}
   final Color? foregroundColor;
+
+  /// The disabled background color of this action.
+  final Color? disabledBackgroundColor;
+  
+  /// The disabled foreground color of this action.
+  final Color? disabledForegroundColor;
 
   /// {@template slidable.actions.autoClose}
   /// Whether the enclosing [Slidable] will be closed after [onPressed]
@@ -97,11 +105,15 @@ class CustomSlidableAction extends StatelessWidget {
           onPressed: () => _handleTap(context),
           style: OutlinedButton.styleFrom(
             padding: padding,
+            disabledBackgroundColor: disabledBackgroundColor,
             backgroundColor: backgroundColor,
+            /*
             disabledForegroundColor: effectiveForegroundColor.withValues(
               alpha: 0.38,
             ),
             iconColor: effectiveForegroundColor,
+            */
+            disabledForegroundColor: disabledForegroundColor,
             foregroundColor: effectiveForegroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius,
